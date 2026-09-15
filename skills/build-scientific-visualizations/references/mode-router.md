@@ -2,6 +2,12 @@
 
 Choose the smallest mode that produces the requested deliverable.
 
+An isolated icon, model emblem, asset set, or background-only export uses the
+[standalone schematic asset subtask](scientific-emblems-and-assets.md). It does not
+claim to be a final figure and needs no placeholder page or new schema mode. Reuse
+existing native sources for local changes; when assembling a figure, return to the
+appropriate mode and its evidence and layout contracts below.
+
 All final modes use the same page-first contract: freeze claims and source coverage,
 write the whole-page blueprint, render and review its proof, then draw details. A mode
 changes the scientific semantics and delivery scale; it does not bypass that order.

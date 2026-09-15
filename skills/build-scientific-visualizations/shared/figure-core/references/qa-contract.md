@@ -16,6 +16,17 @@ channel, transparent border, and colour-fringe check only when the asset explici
 source and evidence role. Real evidence keeps its provenance and never becomes a generic
 decorative icon.
 
+For standalone icons or emblems, use the
+[asset workflow](../../../references/scientific-emblems-and-assets.md) and run
+`scripts/export_schematic_asset.py check <file> --background transparent` on the
+actual PNG being delivered. This reuses the bitmap inspection in project QA without
+requiring a full figure project. A converted RGB image or fully opaque RGBA is not a
+transparent output, and an empty all-transparent image is not a usable asset. Retain
+valid palette transparency and intermediate alpha in membranes and antialiased edges.
+Inspect light/dark composites too: alpha alone cannot detect a checkerboard painted
+inside an otherwise padded image. Do not apply transparent-cutout checks to ordinary
+opaque measurements that do not request them.
+
 ## Panel checks
 
 - In `panel_set` mode, require PNG, PDF, and SVG for every panel.

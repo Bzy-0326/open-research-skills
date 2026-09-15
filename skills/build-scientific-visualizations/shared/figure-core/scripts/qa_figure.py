@@ -15,6 +15,7 @@ from PIL import Image, UnidentifiedImageError
 from pypdf import PdfReader
 
 from project_contract import validate_v12_project
+from schematic_assets import inspect_bitmap
 
 try:
     import numpy as np
@@ -224,24 +225,16 @@ def main() -> None:
         requires_transparency = bool(
             record.get("requires_transparency", registry.get("requires_transparency", False))
         )
-        with Image.open(path) as image:
-            rgba = image.convert("RGBA")
-            alpha = rgba.getchannel("A")
-            bbox = alpha.getbbox()
-            border = list(pixels(alpha.crop((0, 0, rgba.width, 1)))) + list(pixels(alpha.crop((0, rgba.height - 1, rgba.width, rgba.height)))) + list(pixels(alpha.crop((0, 0, 1, rgba.height)))) + list(pixels(alpha.crop((rgba.width - 1, 0, rgba.width, rgba.height))))
-            opaque_border = sum(value > 20 for value in border)
-            visible = sum(value > 20 for value in pixels(alpha))
-            visible_ratio = visible / (rgba.width * rgba.height)
-            neon_green = sum(1 for r, g, b, a in pixels(rgba) if a > 20 and g > 150 and r < 100 and b < 100)
-            if requires_transparency and "A" not in image.getbands():
-                errors.append(f"{asset_id}: no alpha channel")
-            if requires_transparency and opaque_border:
-                errors.append(f"{asset_id}: {opaque_border} opaque border pixels")
-            if requires_transparency and neon_green:
-                errors.append(f"{asset_id}: {neon_green} possible chroma fringe pixels")
-            if max(rgba.size) < 600: errors.append(f"{asset_id}: long edge below 600 px")
-            if visible_ratio < 0.01: warnings.append(f"{asset_id}: very low visible-content ratio")
-            asset_checks[asset_id] = {"size": rgba.size, "bbox": bbox, "visible_ratio": round(visible_ratio, 4), "requires_transparency": requires_transparency, "opaque_border": opaque_border if requires_transparency else None, "green_fringe": neon_green if requires_transparency else None}
+        try:
+            with Image.open(path) as image:
+                result = inspect_bitmap(image, requires_transparency=requires_transparency,
+                                        min_long_edge=600, check_chroma_fringe=True)
+        except (OSError, UnidentifiedImageError):
+            errors.append(f"{asset_id}: cannot read bitmap asset")
+            continue
+        errors.extend(f"{asset_id}: {message}" for message in result["errors"])
+        warnings.extend(f"{asset_id}: {message}" for message in result["warnings"])
+        asset_checks[asset_id] = result["checks"]
         if record.get("kind") == "conceptual_ai":
             for key in ["prompt", "model", "generated_at"]:
                 if not registry.get(key): warnings.append(f"{asset_id}: manifest missing {key}")

@@ -17,6 +17,13 @@ Do not let absent companion skills prevent source-grounded preparation or render
 
 ## Select one mode
 
+For an isolated scientific icon, model emblem, or reusable set of schematic assets,
+use the [standalone asset workflow](references/scientific-emblems-and-assets.md).
+This is a local subtask, not another final-figure mode: do not initialize a full page
+contract just to export an icon. Preserve the requested format and background, and
+check the actual delivered files. Once assets enter a scientific figure, the figure's
+normal content, source-data, layout and final-size checks still apply.
+
 | Mode | Use it for | Mode reference |
 |---|---|---|
 | `layout-sketch` | A disposable reading-order or panel-layout draft when structure is unresolved | `references/mode-router.md` |

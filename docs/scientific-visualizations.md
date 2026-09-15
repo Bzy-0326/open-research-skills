@@ -314,6 +314,26 @@ python3 -B "$SKILL_DIR/shared/figure-core/scripts/run_workflow.py" --help
 
 初始化只是准备工作目录。后续需填写真实来源和版面定义，完成 layout，再检查 final。上述工具不会自动调用图像模型或构建原生 PPTX，直接 CSV demo 也不等于整套图件工作流。
 
+<a id="standalone-assets"></a>
+
+## 单独制作或导出图标素材
+
+只需要图标、模型标志或一组可放进 PPT 的素材时，使用随包的
+[独立图元工作流](../skills/build-scientific-visualizations/references/scientific-emblems-and-assets.md)。
+它不需要先建立整张论文图的版面契约；放回论文图时，再执行正常的来源、语义与版面检查。
+
+先说清素材主体、是否包含文字/外框、透明底还是白底，以及哪些部分由您自己排版。
+“圆形构图”不默认添加圆形背景；截图红框中的文字和箭头也不默认属于图标。
+模型标志用于表达一个核心意象，不需要把完整网络架构缩进小图中。
+
+透明输出必须核验最终文件的 alpha 和边缘，不能凭棋盘格预览判断。已有 SVG 时，
+只移除明确标记的画布背景，保留白色主体和半透明膜。可直接运行
+[透明导出示例](../skills/build-scientific-visualizations/examples/standalone-schematic-asset/README.md)；
+PNG 核验仍支持 Python 3.9，SVG 转 PNG 的可选依赖要求 Python 3.10+。
+
+用户只要求 PNG/SVG 时按该范围交付，并区分原生矢量、混合 SVG 与位图内嵌 SVG。
+更换文件扩展名或将 PNG 放入 SVG，并不等于把素材重建为可拆分的矢量对象。
+
 <a id="delivery"></a>
 
 ## 怎样验收交付物

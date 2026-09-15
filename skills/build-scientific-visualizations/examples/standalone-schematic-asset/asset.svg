@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="120" viewBox="0 0 160 120">
+  <title>Synthetic schematic asset for transparency checks</title>
+  <rect id="canvas" x="0" y="0" width="160" height="120" fill="#FFFFFF"/>
+  <ellipse id="membrane" cx="80" cy="60" rx="52" ry="35" fill="#91B8DF" opacity="0.45"/>
+  <path id="connection" d="M50 63 Q78 25 111 60" fill="none" stroke="#A290C9" stroke-width="3"/>
+  <circle id="light-foreground" cx="56" cy="57" r="9" fill="#FFFFFF"/>
+  <circle id="event" cx="109" cy="62" r="8" fill="#E791B3"/>
+</svg>
