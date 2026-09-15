@@ -1,0 +1,4 @@
+# Optional SVG-to-PNG exporter; requires Python 3.10+ and the system Cairo library.
+# Bitmap export/check and SVG preparation retain the skill's Python 3.9 floor.
+Pillow==11.3.0
+CairoSVG==2.9.1
