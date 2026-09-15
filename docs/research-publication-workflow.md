@@ -661,6 +661,31 @@ python3 -B "$SKILL_DIR/examples/run_demo.py" "$DEMO_OUT/record-demo" --with-publ
 科学数值仍是 synthetic 夹具；这些通过状态不是实测生物学结果。
 详见 [进阶示例说明](../skills/research-publication-pipeline/examples/README.md)。
 
+## 与 Superpowers 配合：把研究计划变成可验证任务
+
+当研究问题与协议已经明确，下一步通常是把它们交给 agent 执行。
+此时可以借鉴 [Superpowers](https://github.com/obra/superpowers) 的任务拆分、
+根因分析与完成前验证。主 skill 已提供按需读取的
+[科研执行指引](../skills/research-publication-pipeline/references/research-execution-discipline.md)，
+无需另装插件，也不新增第十一个科研入口。
+
+| 软件开发方法 | 本仓库中的科研落点 |
+|---|---|
+| 澄清需求与写计划 | 复用现有 charter、intake 与 protocol，只补决策缺口 |
+| TDD 与系统化调试 | 检查代码、数据契约和已知答案；科学假设用对照与证伪条件检验 |
+| 分任务执行 | 每项任务绑定输入版本、具体产物、验证方式和下一步决策 |
+| 实现审查 | 先核对协议与执行，再核对主张支持范围和不确定性 |
+| 工作分支与续接 | 分支隔离代码；用真实输出和现有记录恢复研究状态 |
+| 完成交付 | 区分实现完成、科学支持、稿件就绪和实际公开发布 |
+
+例如，MAE 的已知答案测试通过，说明度量实现正确；它不会使一个无效方法变有效。
+研究结果为负时，保留结果并按冻结规则修正、转向或停止，而不是不断修改分析直到
+“测试变绿”。详见安装目录内的
+[合成回归研究示例](../skills/research-publication-pipeline/examples/execution-discipline.md)。
+
+这层指引复用已有科学记录，不自动提供算力调度、数据血缘数据库或独立实验复现。
+原有 validator 检查其既定结构合同，不会自动证明这里每项流程建议都已执行。
+
 ## 环境、检查与下一份指南
 
 PDF 读取、图形、PPTX 与实际稿件渲染按安装目录内的依赖说明和项目工具链配置。

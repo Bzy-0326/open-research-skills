@@ -111,6 +111,7 @@ Read only what the current boundary needs:
 |---|---|
 | authority, data feasibility, novelty, contribution lane, or venue route | `references/intake-and-routing.md` |
 | bounded field survey, paper reading, charter, or execution plan | `references/survey-and-planning.md` |
+| translating an agreed plan into verifiable tasks, resuming implementation, or combining this workflow with Superpowers | `references/research-execution-discipline.md` |
 | multi-paper exemplar corpus, publication-pattern calibration, or cross-paper figure/section precedent | `references/exemplar-corpus-calibration.md` |
 | pilot design, retrainability probe, authorized-run observation, or anomaly handling | `references/pilot-and-monitoring.md` |
 | benchmark freeze, baselines, headroom, candidate design, iteration, or recovery | `references/protocol-headroom-and-development.md` |

@@ -74,3 +74,8 @@ The plan must state:
 
 Each planned experiment answers a named decision. Remove work that cannot change the
 route, protocol, candidate, or claim.
+
+When an agreed plan is ready for nontrivial implementation or analysis, use
+[research execution discipline](research-execution-discipline.md) to define bounded
+tasks, implementation checks, and scientific review against the existing records.
+Resume valid work without repeating intake; a planning-only request ends with the plan.
